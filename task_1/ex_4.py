@@ -17,7 +17,7 @@ def bananas(word):
     for mask in masks:
         cur_banana = banana.copy()
 
-        for i in range(len(mask)):
+        for i, _ in enumerate(mask):
             if mask[i] == '-':
                 cur_banana[i] = '-'
         if ''.join(i for i in cur_banana if i != '-') == 'banana':
@@ -31,4 +31,5 @@ assert bananas("bbananana") == {"b-an--ana", "-banana--", "-b--anana", "b-a--nan
                                 "b-ana--na", "b---anana", "-bana--na", "-ba--nana", "b-anan--a",
                                 "-ban--ana", "b-anana--"}
 assert bananas("bananaaa") == {"banan-a-", "banana--", "banan--a"}
-assert bananas("bananana") == {"ban--ana", "ba--nana", "bana--na", "b--anana", "banana--", "banan--a"}
+assert bananas("bananana") == {"ban--ana", "ba--nana", "bana--na",
+                               "b--anana", "banana--", "banan--a"}

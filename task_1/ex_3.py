@@ -1,8 +1,8 @@
-def zeros(n):
+def zeros(num):
     res = 0
-    while n > 0:
-        n //= 5
-        res += n
+    while num > 0:
+        num //= 5
+        res += num
     return res
 
 
