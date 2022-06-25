@@ -14,4 +14,3 @@ assert domain_name("http://www.google.com") == "google", print(domain_name("http
 assert domain_name("http://google.co.jp") == "google", print(domain_name("http://google.co.jp"))
 assert domain_name("www.xakep.ru") == "xakep", print(domain_name("www.xakep.ru"))
 assert domain_name("https://youtube.com") == "youtube", print(domain_name("https://youtube.com"))
-

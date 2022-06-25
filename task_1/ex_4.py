@@ -1,21 +1,28 @@
-def bananas(s, banana = 'banana'):
-    ret = []
+import itertools
 
-    if banana == '':
-        ret.append(''.rjust(len(s), '-'))
-        return ret
 
-    left_s = ''
-    for si in range(len(s)):
-        if banana[0] == s[si]:
-            left_s = ''.rjust(si, '-') + s[si]
-            if s[si + 1:] == '' and banana[1:] == '':
-                ret.append(left_s)
-            else:
-                right_s_list = bananas(s[si + 1:], banana[1:])
-                for right_s in right_s_list:
-                    ret.append(left_s + right_s)
-    return set(ret)
+def bananas(word):
+    if len(word) <= 6 and word != 'banana':
+        return set()
+
+    banana = list(word)
+
+    lines = ['' for i in range(6)]
+    for i in range(len(banana) - 6):
+        lines.append('-')
+
+    masks = set(itertools.permutations(lines, len(lines)))
+    answer = set()
+
+    for mask in masks:
+        cur_banana = banana.copy()
+
+        for i in range(len(mask)):
+            if mask[i] == '-':
+                cur_banana[i] = '-'
+        if ''.join(i for i in cur_banana if i != '-') == 'banana':
+            answer.add(''.join(i for i in cur_banana))
+    return answer
 
 
 assert bananas("banann") == set()
