@@ -17,8 +17,8 @@ def bananas(word):
     for mask in masks:
         cur_banana = banana.copy()
 
-        for i, _ in enumerate(mask):
-            if mask[i] == '-':
+        for i, symbol in enumerate(mask):
+            if symbol == '-':
                 cur_banana[i] = '-'
         if ''.join(i for i in cur_banana if i != '-') == 'banana':
             answer.add(''.join(i for i in cur_banana))
